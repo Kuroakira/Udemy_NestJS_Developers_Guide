@@ -3,5 +3,6 @@ This repository is to store my output through the Udemy course, "NestJS: The Com
 " created by Stephen Grider.  
 # Environment to use
 - OS: windows
-- nodejs:v18.17.0
-- npm:9.6.7
+- nodejs:v20.4.0
+- npm:9.7.2
+- REST Client: Thunder Client(VSCode)
