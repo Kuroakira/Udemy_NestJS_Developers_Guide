@@ -11,6 +11,7 @@ nest g service reports
 npm install @nestjs/typeorm typeorm sqlite3
 npm run start:dev
 npm install class-validator class-transformer
+npm install cookie-session @types/cookie-session
 ```
 
 # To debug for db.sqlite
