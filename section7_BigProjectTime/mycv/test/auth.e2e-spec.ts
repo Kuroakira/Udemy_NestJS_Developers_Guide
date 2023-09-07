@@ -15,6 +15,11 @@ describe('Authentication System', () => {
     await app.init();
   });
 
+  afterEach(async () => {
+    await app.close();
+  });
+
+
   it('handles a signup request', () => {
     const email = 'asdlfgeea@akl.com';
     return request(app.getHttpServer())
@@ -27,4 +32,26 @@ describe('Authentication System', () => {
             expect(email).toEqual(email);
         });
   });
+
+  it('signup as a new user then get the currently logged in user', async () => {
+    const email = 'asdlfgeea@akl.com';
+    const password = 'password';
+
+    const res = await request(app.getHttpServer())
+        .post('/auth/signup')
+        .send({
+            email,
+            password
+        })
+        .expect(201);
+
+    const cookie = res.get('Set-Cookie');
+
+    const { body } = await request(app.getHttpServer())
+        .get('/auth/whoami')
+        .set('Cookie', cookie)
+        .expect(200);
+
+    expect(body.email).toEqual(email);
+  }, 60000);
 });
