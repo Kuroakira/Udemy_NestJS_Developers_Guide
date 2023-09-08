@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "email": "asdf2@asdf.test",
+    "email": "asdf3@asdf.test",
     "password": "abcdefg"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-    "email": "asdf2@asdf.test",
+    "email": "asdf3@asdf.test",
     "password": "abcdefg"
 }
 
@@ -32,3 +32,14 @@ content-type: application/json
     "lat": 0,
     "price": 50000
 }
+
+### Update approved status of report
+PATCH http://localhost:3000/reports/1
+content-type: application/json
+
+{
+    "approved": true
+}
+
+### Get an estimate for an existing vehicle
+GET http://localhost:3000/reports?make=toyota&model=corolla&lng=0&lat=0&mileage=20000&year=1980
